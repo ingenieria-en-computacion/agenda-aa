@@ -1,10 +1,12 @@
+#include <stdio.h>
+#include <string.h> 
 #include "agenda.h"
 
 /**
  * Esta función se encarga de iniciar el número de contactos a cero
  */
 void iniciar_agenda(Agenda *agenda){
-
+    (*agenda).num_contactos = 0;
 }
 
 
@@ -16,7 +18,14 @@ int num_contactos;
  * Esta función sirve para agregar un contacto nuevo en la agenda
  */
 void agregar_contacto(Agenda *agenda, Contacto c){
-
+    if ((*agenda).num_contactos < MAX_CONTACTOS){
+        // con esto accederemos al arreglo de 'contactos'
+        int indice = (*agenda).num_contactos;
+        (*agenda).contactos[indice] = c;
+        (*agenda).num_contactos++;
+    }else{
+        printf("Error fatal: La agenda esta llena\n");
+    }
 }
 
 
@@ -25,7 +34,13 @@ void agregar_contacto(Agenda *agenda, Contacto c){
  * En caso contrario retorna -1
  */
 int buscar_contacto(Agenda *agenda, char *nombre){
-
+    
+    for (int i = 0; i < (*agenda).num_contactos; i++) {
+        if (strcmp((*agenda).contactos[i].nombre, nombre) == 0){
+            return i; //vamos a retornar la posicion
+        }
+    }
+    return -1;
 }
 
 
