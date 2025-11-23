@@ -8,12 +8,12 @@ enum Mes{ENERO, FEBERO, MARZO, ABRIL, MAYO, JUNIO, JULIO, SEPTIEMBRE, OCTUBRE, N
 
 struct Persona{
     char nombre[30];
-    // apellido
-    // mes de nacimiento
-    // dia de nacimiento
-    // tipo contacto
-    // numero de telefono
-    // tipo de numero
+    char apellido [30];// apellido
+    int mes_de_nacimiento [30];// mes de nacimiento
+    int dia_de_nacimiento [30];// dia de nacimiento
+    char tipo_contacto [10];// tipo contacto
+    char telefono [15];// numero de telefono
+    char tipo_de_numero [10];// tipo de numero
 };
 
 typedef struct Persona Contacto;
@@ -33,7 +33,7 @@ void ordenar_contactos(Agenda *agenda);
 void ordenar_contactos_inv(Agenda *agenda);
 void mostrar_contacto(Contacto);
 void leer_contacto(Contacto *c);
-void cargar_contactos(char *filename);
-void guardar_contactos(char *filename);
+void cargar_contactos(char *filename, Agenda *agenda);
+void guardar_contactos(char *filename, Agenda agenda);
 
 #endif // __AGENDA_H_
